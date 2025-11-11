@@ -57,7 +57,7 @@ export function GameCanvas({
               canvas2dCtx.fillStyle = CELL_COLORS.Live;
             } else {
               canvas2dCtx.fillStyle =
-                y % 2 !== 0 || x % 2 !== 0
+                (x + y) % 2 !== 0
                   ? CELL_COLORS.DeadZebra
                   : CELL_COLORS.Dead;
             }

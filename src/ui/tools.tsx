@@ -8,32 +8,11 @@ export function GameTools({
   state: GameState;
   dispatch: GameDispatch;
 }) {
-  const speedPercentage = Math.round((state.currentSpeed / MAX_SPEED) * 100);
+  const { isRunning, currentSpeed } = state;
+  const speedPercentage = Math.round((currentSpeed / MAX_SPEED) * 100);
 
   return (
     <div className="game-tools">
-      Speed
-      <input
-        type="range"
-        min={MIN_SPEED}
-        max={MAX_SPEED}
-        value={state.currentSpeed}
-        onChange={(e) =>
-          dispatch({
-            type: "SET_SPEED",
-            payload: +e.target.value,
-          })
-        }
-      />
-      <span className="game-speed">{speedPercentage}</span>
-      <button
-        type="button"
-        onClick={() => {
-          dispatch({ type: "RESET_BOARD" });
-        }}
-      >
-        Reset
-      </button>
       <button
         type="button"
         className="start"
@@ -43,8 +22,32 @@ export function GameTools({
           });
         }}
       >
-        {state.isRunning ? "Stop" : "Start"}
+        {isRunning ? "Stop" : "Run"}
       </button>
+      <button
+        type="button"
+        onClick={() => {
+          dispatch({ type: "RESET_BOARD" });
+        }}
+      >
+        Reset
+      </button>
+      <div className="game-speed-controls">
+        Speed
+        <input
+          type="range"
+          min={MIN_SPEED}
+          max={MAX_SPEED}
+          value={currentSpeed}
+          onChange={(e) =>
+            dispatch({
+              type: "SET_SPEED",
+              payload: +e.target.value,
+            })
+          }
+        />
+        <span className="game-speed">{speedPercentage}</span>
+      </div>
     </div>
   );
 }

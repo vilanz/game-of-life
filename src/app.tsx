@@ -12,9 +12,9 @@ function GameOfLife() {
   return (
     <div className="game-container">
       <h1>Game of Life</h1>
-      <GameCanvas state={state} dispatch={dispatch} />
-      <GameTools state={state} dispatch={dispatch} />
       <GameInfo state={state} />
+      <GameTools state={state} dispatch={dispatch} />
+      <GameCanvas state={state} dispatch={dispatch} />
       <GitHubLink />
     </div>
   );

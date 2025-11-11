@@ -1,17 +1,16 @@
-export const DEFAULT_SPEED = 54;
+export const DEFAULT_SPEED = 80;
 export const MIN_SPEED = 0;
 export const MAX_SPEED = 90;
 
 export const IS_DESKTOP = window.innerWidth >= 768;
 
-// better sizes are always odd so the plaid pattern on the grid looks better
-export const BOARD_WIDTH = IS_DESKTOP ? 99 : 19;
-export const BOARD_HEIGHT = IS_DESKTOP ? 49 : 29;
-export const CELL_SIZE = IS_DESKTOP ? 10 : 14;
+export const BOARD_WIDTH = IS_DESKTOP ? 100 : 20;
+export const BOARD_HEIGHT = IS_DESKTOP ? 50 : 30;
+export const CELL_SIZE = IS_DESKTOP ? 10 : 15;
 
 export enum CELL_COLORS {
-  Live = "black",
-  Dead = "white",
-  DeadZebra = "rgb(220, 230, 255)",
-  Hovering = "lime",
+  Live = "white",
+  Dead = "black",
+  DeadZebra = "rgb(7, 7, 7)",
+  Hovering = "cyan",
 }
