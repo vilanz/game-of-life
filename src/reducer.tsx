@@ -5,7 +5,7 @@ import {
   drawPointInBoard,
   createEmptyBoard,
   getNextGeneration,
-} from "./logic";
+} from "./board";
 
 export interface GameState {
   board: Board;

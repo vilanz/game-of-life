@@ -1,6 +1,6 @@
-export const DEFAULT_SPEED = 72;
+export const DEFAULT_SPEED = 86;
 export const MIN_SPEED = 0;
-export const MAX_SPEED = 80;
+export const MAX_SPEED = 96;
 
 export const IS_DESKTOP = window.innerWidth >= 768;
 

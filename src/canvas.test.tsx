@@ -1,8 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-import { CELL_SIZE } from "../defaults";
-import { createEmptyBoard } from "../logic";
+import { CELL_SIZE } from "./defaults";
+import { createEmptyBoard } from "./board";
 import { getMouseEventCell } from "./canvas";
 
 it.each([

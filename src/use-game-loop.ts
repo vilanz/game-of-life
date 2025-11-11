@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import { GameDispatch, GameState } from "../reducer";
-import { useDebouncedValue } from "../utils";
+import { GameDispatch, GameState } from "./reducer";
+import { useDebouncedValue } from "./utils";
 
 export const useGameLoop = (state: GameState, dispatch: GameDispatch) => {
   const { currentSpeed, isRunning } = state;

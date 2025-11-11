@@ -1,4 +1,4 @@
-import { getNextGeneration } from ".";
+import { getNextGeneration } from "./board";
 
 describe("still life (stays the same forever)", () => {
   test("4x4 block", () => {

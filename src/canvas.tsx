@@ -5,10 +5,10 @@ import {
   CELL_COLORS,
   CELL_SIZE,
   IS_DESKTOP,
-} from "../defaults";
-import { Board } from "../logic";
-import { GameDispatch, GameState } from "../reducer";
-import { getReffedValue } from "../utils";
+} from "./defaults";
+import { Board } from "./board";
+import { GameDispatch, GameState } from "./reducer";
+import { getReffedValue } from "./utils";
 
 function getOffsetPositionInCanvas(position: number) {
   return Math.floor(position / CELL_SIZE);

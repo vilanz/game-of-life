@@ -1,7 +1,10 @@
 import { useReducer } from "react";
 import ReactDOM from "react-dom/client";
 import { gameReducer, INITIAL_STATE } from "./reducer";
-import { GameCanvas, GameTools, useGameLoop, GameInfo } from "./ui";
+import { GameInfo } from "./game-info";
+import { GameTools } from "./game-tools";
+import { GameCanvas } from "./canvas";
+import { useGameLoop } from "./use-game-loop";
 
 function GameOfLife() {
   const [state, dispatch] = useReducer(gameReducer, INITIAL_STATE);

@@ -1,5 +1,5 @@
-import { IS_DESKTOP } from "../defaults";
-import { GameState } from "../reducer";
+import { IS_DESKTOP } from "./defaults";
+import { GameState } from "./reducer";
 
 export function GameInfo({ state }: { state: GameState }) {
   const { generation, isRunning } = state;

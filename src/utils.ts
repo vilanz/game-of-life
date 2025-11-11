@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useState, useRef } from "react";
 
 export function useDebouncedValue<T>(value: T, time: number): T {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
@@ -13,4 +13,12 @@ export function useDebouncedValue<T>(value: T, time: number): T {
   }, [value, time]);
 
   return debouncedValue;
+}
+
+export function getReffedValue<T>(val: T): MutableRefObject<T> {
+  const valRef = useRef<T>(val);
+  useEffect(() => {
+    valRef.current = val;
+  }, [val]);
+  return valRef;
 }

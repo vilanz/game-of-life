@@ -1,5 +1,5 @@
-import { MAX_SPEED, MIN_SPEED } from "../defaults";
-import { GameDispatch, GameState } from "../reducer";
+import { MAX_SPEED, MIN_SPEED } from "./defaults";
+import { GameDispatch, GameState } from "./reducer";
 
 export function GameTools({
   state,
