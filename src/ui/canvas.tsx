@@ -37,6 +37,8 @@ export function GameCanvas({
   const { board, hoverPoint } = state;
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const prevBoardRef = useRef<Board | null>(null);
+  const prevHoverPointRef = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(
     function redrawCanvas() {
@@ -44,32 +46,60 @@ export function GameCanvas({
       if (!canvas2dCtx) {
         return;
       }
-      for (let y = 0; y < board.length; y++) {
-        for (let x = 0; x < board[y].length; x++) {
-          const isHovering = hoverPoint
-            ? hoverPoint.x === x && hoverPoint.y === y
-            : false;
-          if (isHovering) {
-            canvas2dCtx.fillStyle = CELL_COLORS.Hovering;
+
+      const drawCell = (x: number, y: number) => {
+        const isHovering = hoverPoint
+          ? hoverPoint.x === x && hoverPoint.y === y
+          : false;
+        if (isHovering) {
+          canvas2dCtx.fillStyle = CELL_COLORS.Hovering;
+        } else {
+          const isAlive = board[y][x];
+          if (isAlive) {
+            canvas2dCtx.fillStyle = CELL_COLORS.Live;
           } else {
-            const isAlive = board[y][x];
-            if (isAlive) {
-              canvas2dCtx.fillStyle = CELL_COLORS.Live;
-            } else {
-              canvas2dCtx.fillStyle =
-                (x + y) % 2 !== 0
-                  ? CELL_COLORS.DeadZebra
-                  : CELL_COLORS.Dead;
+            canvas2dCtx.fillStyle =
+              (x + y) % 2 !== 0
+                ? CELL_COLORS.DeadZebra
+                : CELL_COLORS.Dead;
+          }
+        }
+        canvas2dCtx.fillRect(
+          x * CELL_SIZE,
+          y * CELL_SIZE,
+          CELL_SIZE,
+          CELL_SIZE
+        );
+      };
+
+      // first render: draw all cells
+      if (prevBoardRef.current === null) {
+        for (let y = 0; y < board.length; y++) {
+          for (let x = 0; x < board[y].length; x++) {
+            drawCell(x, y);
+          }
+        }
+      } else {
+        // subsequent renders: only redraw changed cells and hover cells
+        for (let y = 0; y < board.length; y++) {
+          for (let x = 0; x < board[y].length; x++) {
+            const cellChanged = board[y][x] !== prevBoardRef.current[y][x];
+            const isCurrentlyHovering = hoverPoint
+              ? hoverPoint.x === x && hoverPoint.y === y
+              : false;
+            const wasHovering = prevHoverPointRef.current
+              ? prevHoverPointRef.current.x === x && prevHoverPointRef.current.y === y
+              : false;
+
+            if (cellChanged || isCurrentlyHovering || wasHovering) {
+              drawCell(x, y);
             }
           }
-          canvas2dCtx.fillRect(
-            x * CELL_SIZE,
-            y * CELL_SIZE,
-            CELL_SIZE,
-            CELL_SIZE
-          );
         }
       }
+
+      prevBoardRef.current = board;
+      prevHoverPointRef.current = hoverPoint;
     },
     [board, hoverPoint]
   );
