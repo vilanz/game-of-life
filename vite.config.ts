@@ -2,6 +2,6 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  base: "/react-gol/",
+  base: "/game-of-life/",
   plugins: [react()],
 });

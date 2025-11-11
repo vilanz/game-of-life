@@ -1,10 +1,9 @@
 import { useReducer } from "react";
 import ReactDOM from "react-dom/client";
 import { gameReducer, INITIAL_STATE } from "./reducer";
-import { GameCanvas, GameTools, useGameLoop, GameInfo, GitHubLink } from "./ui";
+import { GameCanvas, GameTools, useGameLoop, GameInfo } from "./ui";
 
 function GameOfLife() {
-  // poor man's Redux, but our component tree isn't very deep anyway
   const [state, dispatch] = useReducer(gameReducer, INITIAL_STATE);
 
   useGameLoop(state, dispatch);
@@ -15,7 +14,6 @@ function GameOfLife() {
       <GameInfo state={state} />
       <GameTools state={state} dispatch={dispatch} />
       <GameCanvas state={state} dispatch={dispatch} />
-      <GitHubLink />
     </div>
   );
 }

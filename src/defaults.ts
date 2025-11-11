@@ -1,6 +1,6 @@
-export const DEFAULT_SPEED = 80;
+export const DEFAULT_SPEED = 72;
 export const MIN_SPEED = 0;
-export const MAX_SPEED = 90;
+export const MAX_SPEED = 80;
 
 export const IS_DESKTOP = window.innerWidth >= 768;
 
@@ -12,5 +12,5 @@ export enum CELL_COLORS {
   Live = "white",
   Dead = "black",
   DeadZebra = "rgb(7, 7, 7)",
-  Hovering = "cyan",
+  Hovering = "salmon",
 }

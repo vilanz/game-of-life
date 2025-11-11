@@ -48,6 +48,14 @@ export function GameTools({
         />
         <span className="game-speed">{speedPercentage}</span>
       </div>
+      <a
+        className="github"
+        href="https://github.com/vilanz/game-of-life"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img src="/github.png" height={20} alt="GitHub" />
+      </a>
     </div>
   );
 }
